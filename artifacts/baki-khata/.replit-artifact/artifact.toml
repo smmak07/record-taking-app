@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/"
+title = "বাকি খাতা"
+description = "An Android-first Bengali customer ledger for small shops. Track customer balances, add credit and payment entries, search customers, and send WhatsApp payment reminders with data stored locally on the device."
+version = "1.0.0"
+id = "artifacts/baki-khata"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/" ]
+localPort = 21099
+
+[services.development]
+run = "pnpm --filter @workspace/baki-khata run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/baki-khata", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/baki-khata", "run", "serve" ]
+
+[services.env]
+PORT = "21099"
+BASE_PATH = "/"
